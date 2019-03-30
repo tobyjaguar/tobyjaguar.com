@@ -1,0 +1,47 @@
+html {
+  background-color: #edeaea;
+}
+
+.header {
+  width: 80%;
+  margin: 1rem;
+  position: relative;
+  text-align: center;
+  transform: translate(-4%, 0);
+}
+
+.header-right {
+  float: right;
+}
+
+.date {
+  color: #c4c4c4;
+}
+
+.link {
+  color: #000000;
+  border-radius: 5px 16px 5px;
+  padding: 5px;
+  margin-right: 10px;
+}
+
+.text-link {
+  color: #000000;
+}
+
+.link:hover {
+  background: #f8f8f8;
+}
+
+.text-link:hover {
+  background: #f8f8f8;
+}
+
+.text-wrap {
+  float: right;
+  margin: 10px;
+}
+
+.centered {
+  text-align: center;
+}

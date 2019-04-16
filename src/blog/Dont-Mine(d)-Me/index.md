@@ -4,7 +4,7 @@ date: "03-31-2019"
 ---
 
 ## Don't Mine If I Do!
-*(What a pain in the ass)*
+*(What a pain in the a$$)*
 
 ![mine](dominik-vanyi-632134-unsplash.jpg)
 `(Photo by Dominik Vanyi on Unsplash)`

@@ -6,6 +6,8 @@ date: "04-15-2019"
 ## AH HA Proxy
 *(Or, take on me a server that stays up)*
 
+*(updated 04-20-2019)*
+
 ![burnout](marc-liu-255460-unsplash.jpg)
 `(Photo by marc liu on Unsplash)`
 
@@ -346,6 +348,25 @@ with the parameter `2048`.
 
 The above configuration allowed for a load balancer that handles a server failure
 which will resolve https requests to the DApp servers.
+
+A complete version (edited for publication) looks like this:
+
+![config](final_config.jpg)
+
+HAProxy does want to be enabled on boot either by setting the default init
+script by adding:
+
+```
+ENABLED=1
+```
+
+to the `/etc/default/haproxy` file or by enabling the service with:
+
+```
+sudo systemctl enable haproxy
+```
+
+Once this is done HAProxy will restart on a reboot.
 
 I hope this helps anyone who might be looking for a similar solution, particularly
 with cerbot and HAProxy.

@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: 'Toby Jaguar',
-    copyright: '2019',
+    copyright: '2020',
   },
   plugins: [
     {

@@ -1,6 +1,6 @@
 ---
 title: "I Want AWS and Https"
-date: "03-20-220"
+date: "03-20-2020"
 ---
 
 ## I Want AWS and Https
@@ -136,12 +136,12 @@ is yet another trick here. In the Nginx server settings for the app, say at
 `/etc/nginx/sites-available/examplesite.com` you need to add the header
 forwarding command block as follows:
 
-        ```
-        proxy_set_header X-Forwarded-Proto $scheme;
-        if ( $http_x_forwarded_proto != 'https' ) {
-                return 301 https://$host$request_uri;
-        }
-        ```
+```
+proxy_set_header X-Forwarded-Proto $scheme;
+  if ( $http_x_forwarded_proto != 'https' ) {
+    return 301 https://$host$request_uri;
+  }
+```
 
 From what I've read it is some Nginx redirect logic in the header that allows
 this setup to work.
@@ -153,4 +153,4 @@ listen to 443, it only redirects port 80 traffic. This resulted in a 502 error
 until I changed the 443 listener to forward to port 80 on the app instance.
 
 I hope this helps someone else, but more likely me the next time I have to do
-this. 
+this.

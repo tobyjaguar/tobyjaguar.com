@@ -1,6 +1,6 @@
 Title: Contact
 
-Contact
+## Contact
 
 - [GitHub][1]
 - [Twitter][2]

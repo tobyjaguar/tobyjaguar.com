@@ -1,9 +1,12 @@
 Title: Contact
 
-##Contact
+#Contact
 
-<a href={"https://github.com/tobyjaguar"} target='new'><img src={data.github.childImageSharp.resize.src} alt='github' /></a>
+- [GitHub][1]
+- [Twitter][2]
+- [LinkedIn][3]
 
-<a href={"https://twitter.com/talgya"} target='new'><img src={data.twitter.childImageSharp.resize.src} alt='twitter' /></a>
 
-<a href={"https://www.linkedin.com/in/toby-algya-58997712/"} target='new'><img src={data.linkedIn.childImageSharp.resize.src} alt='twitter' /></a>
+[1]: <https://github.com/tobyjaguar target='new'>
+[2]: <https://twitter.com/talgya target='new'>
+[3]: <https://www.linkedin.com/in/toby-algya-58997712 target='new'>

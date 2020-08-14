@@ -1,6 +1,6 @@
 Title: About Me
 
-About Me
+##About Me
 
 My primary focus these days is on web3-full-stack, dApp development.
 I have spent a lot of time researching the cryptocurrency space, i.e.

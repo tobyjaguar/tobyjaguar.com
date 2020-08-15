@@ -6,7 +6,7 @@ Date: 03/15/2019
 ![city](_saketh-garuda.jpg)
 `(Photo by Saketh Garuda on Unsplash)`
 
-In a previous post on [Passive Income in Crypto](/Passive-Income/), 
+In a previous post on [Passive Income in Crypto](https://tobyjaguar.blot.im/passive-income-with-cyrptocurrency), 
 <a href="https://celsius.network/" target="new">Celsius<a/>
 was used as an example for making a yield on crypto deposited on their platform.
 <a href="https://celsius.network/" target="new">Celsius</a> 

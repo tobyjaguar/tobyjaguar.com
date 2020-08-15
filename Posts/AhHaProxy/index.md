@@ -1,7 +1,6 @@
----
-title: "Ah Ha Proxy"
-date: "04-15-2019"
----
+Title: Ah Ha Proxy
+Date: 04/15/2019
+
 
 ## AH HA Proxy
 *(Or, take on me a server that stays up)*

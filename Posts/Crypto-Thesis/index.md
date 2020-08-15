@@ -1,10 +1,9 @@
----
-title: "Cyrptocurrency Retail Investment Thesis"
-date: "03-09-2019"
----
+Title: Cyrptocurrency Retail Investment Thesis
+Date: 03/09/2019
+
 
 ## A case for crypto.
-![foot](blog_01.jpg)
+![foot](_blog_01.jpg)
 
 I am putting up this site as an internet reference for my ideas,
 and as a collective catalog of work. In doing so, the first blog
@@ -26,7 +25,7 @@ I didn't buy bitcoin at $11, however. As I followed the price, within
 the week I was watching the price rose from $11 to $13, and I thought that
 bitcoin was too volatile for me. (oh the irony)
 
-![chart](bitcoin_chart.png)
+![chart](_bitcoin_chart.png)
 
 *(bitcoin chart: line drawn from Nov. 2012 to the peak in Dec. 2017 and its
 subsequent fall.)*
@@ -56,7 +55,8 @@ lot, it was fun, and it was addicting. This was a "stock" market, these were pro
 that had representational value in quantifiable units that could easily be traded through
 online exchanges.
 
-For me, this was the same as trading stocks on [Scottrade](https://www.tdameritrade.com/scottrade.page),
+For me, this was the same as trading stocks on 
+<a href="https://www.tdameritrade.com/scottrade.page" target="new">Scottrade</a>,
 the online brokerage I used, now TD Ameritrade (things change).
 
 There was a difference to using an online broker, trading was faster, and the
@@ -101,7 +101,7 @@ participants that have never had such access before in history.
 
 I remain hopeful, and work toward that prospect in the near future.
 
-![cards](cryptocards.jpg)   
+![cards](_cryptocards.jpg)   
 
 
-*disclaimer: this is not to be taken as financial advice, or advice of any kind.*
+*disclaimer: This is not to be taken as financial advice, or advice of any kind. These musings are offered, at best, as educational, and at worst for entertainment purposes. Do not take action on the descriptions above, as they contain risks, and are not intended as financial advice. Do not do anything above.*

@@ -1,22 +1,22 @@
----
-title: "I Want AWS and Https"
-date: "03-20-2020"
----
+Title: I Want AWS and Https
+Date: 03/20/2020
+
 
 ## I Want AWS and Https
 *...but how?*
 
 It has been a spell since I have written here, mainly because
 I have been building out infrastructure for
-[SmartPiggies](https://www.smartpiggies.com/). And in doing so
-I wanted to create another post for posterity.
+<a href="https://www.smartpiggies.com/" target="new">SmartPiggies</a>. 
+And in doing so I wanted to create another post for posterity.
 
 Jump to `Here is the good stuff` if you want to jump to the `good` stuff.
 
 We are moving most of our services over to AWS and I had the great fortune
 of navigating that rabbit hole. The initial challenge was to move
 one of our apps over to an AWS server, but of course we want https
-to be available. In previous cases we have used [cerbot](https://certbot.eff.org/)
+to be available. In previous cases we have used 
+<a href="https://certbot.eff.org/" target="new">cerbot</a>
 to generate and provider the ssl certificate, as well as manage the
 Nginx settings for port 443. This was very easy to implement on the
 Ubuntu 16.04 servers that I usually run. When looking to move over to
@@ -59,7 +59,8 @@ the site name).
 
 ## Here is the good stuff
 After I had the cert I needed to figure out how to apply it. I could not figure
-this out. I did find a helpful [video](https://www.youtube.com/watch?v=Sr2Mq9Gegew)
+this out. I did find a helpful 
+<a href="https://www.youtube.com/watch?v=Sr2Mq9Gegew" target="new">video</a>
 on youtube that explained a bit of the structural components of how to set this
 up. There is one trick at the end here for my specific situation, so check back
 if you watch that video, but I will also detail the process here. To use an
@@ -154,3 +155,5 @@ until I changed the 443 listener to forward to port 80 on the app instance.
 
 I hope this helps someone else, but more likely me the next time I have to do
 this.
+
+*disclaimer: these musings are offered, at best, as educational, and at worst for entertainment purposes. Do not take action on the descriptions above, as they contain risks, and are not intended as financial advice. Do not do anything above.*

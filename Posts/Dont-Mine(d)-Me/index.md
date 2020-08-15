@@ -1,12 +1,11 @@
----
-title: "Don't Mine(d) Me"
-date: "03-31-2019"
----
+Title: Don't Mine(d) Me
+Date: 03/31/2019
+
 
 ## Don't Mine If I Do!
 *(What a pain in the a$$)*
 
-![mine](dominik-vanyi-632134-unsplash.jpg)
+![mine](_dominik-vanyi-632134-unsplash.jpg)
 `(Photo by Dominik Vanyi on Unsplash)`
 
 Victory! Aaaaaaaand that was quite the exercise in futility.  
@@ -19,18 +18,18 @@ make very much in mining rewards.
 
 *Note: mining rewards are taxable as income to US citizens*
 
-[UBIQ](https://ubiqsmart.com/) went through a hard fork in late 2018 to change their hashing algorithm to
-[Ubqhash](https://blog.ubiqsmart.com/ubiq-quarterly-report-august-2018-f7451c2149c2). This meant that
-the current mining software used to mine the rewards for that chain would need to be updated. I can't
-remember what the issues were, but the platforms that were currently mining [UBIQ](https://ubiqsmart.com/)
-were no longer going to work. So I shut the rig down and it sat for a couple months. When I was asked
-to pick up all the gear, I thought it would be fun to setup the rig at my apartment and work through
-a proof-of-concept to get a new system up and running. Well, that turned out to be quite the adventure.
+<a href="https://ubiqsmart.com/" target="new">UBIQ</a> 
+went through a hard fork in late 2018 to change their hashing algorithm to
+<a href="https://blog.ubiqsmart.com/ubiq-quarterly-report-august-2018-f7451c2149c2" target="new">Ubqhash</a>. 
+This meant that the current mining software used to mine the rewards for that chain would need to be updated. I can't remember what the issues were, but the platforms that were currently mining <a href="https://ubiqsmart.com/" target="new">UBIQ</a>
+were no longer going to work. So I shut the rig down and it sat for a couple months. 
+When I was asked to pick up all the gear, I thought it would be fun to setup the rig at my apartment and work through a proof-of-concept to get a new system up and running. Well, that turned out to be quite the adventure.
 
-![rig](IMG_3196.jpg)
+![rig](_IMG_3196.jpg)
 
-The goal was to get the [ubqminer](https://github.com/ubiq/ubqminer) working on a Ubuntu installation. The
-incentive was fun, what was delivered was pain.
+The goal was to get the 
+<a href="https://github.com/ubiq/ubqminer" target="new">ubqminer</a> 
+working on a Ubuntu installation. The incentive was fun, what was delivered was pain.
 
 Skip down to *Here is what worked* to avoid all the complaining to follow.
 
@@ -45,18 +44,23 @@ gpu drivers must work. Make no assumptions.
 
 I have three AMD RX570 GPU cards that I was planning to mine with. I began with a Ubuntu 18.04
 build and downloaded the
-[AMDGPU](https://www.amd.com/en/support/graphics/radeon-500-series/radeon-rx-500-series/radeon-rx-570)
+<a href="https://www.amd.com/en/support/graphics/radeon-500-series/radeon-rx-500-series/radeon-rx-570" target="new">AMDGPU</a>
 the RX570 drivers, which is a zipped file.
-There are [instructions](https://amdgpu-install.readthedocs.io/en/latest/) which list the process for
+There are 
+<a href="https://amdgpu-install.readthedocs.io/en/latest/" target="new">instructions</a> which list the process for
 unzipping and installation. Of course there is an immediate issue, as there are variants that can, and
 need to be, installed. The critical information is that this rig will use multiple cards and two of
 the GPUs will run headless. Long story short, after hours, and days, of installing with the variants,
 blowing up the system, looking at every AMDGPU issue online, adjusting the grub file, corrupting the
 hard drive (many times), reinstalling Ubuntu, and repeating the process, I could never get Ubuntu 18.04
-to run three AMD GPUs with [ubqminer](https://github.com/ubiq/ubqminer). I asked for help in the
-[UBIQ](https://ubiqsmart.com/) Discord mining channel, which resulted in the advice of using a different
-miner. I tried that, I built [ubqminer](https://github.com/ubiq/ubqminer) from the source code, I tried more
-combinations than I can recall, and nothing worked. Very frustrating.
+to run three AMD GPUs with
+<a href="https://github.com/ubiq/ubqminer" target="new">ubqminer</a>. 
+I asked for help in the
+<a href="https://ubiqsmart.com/" target="new">UBIQ</a> 
+Discord mining channel, which resulted in the advice of using a different
+miner. I tried that, I built 
+<a href="https://github.com/ubiq/ubqminer" target="new">ubqminer</a> 
+from the source code, I tried more combinations than I can recall, and nothing worked. Very frustrating.
 
 The main issues were with OpenCL not being installed, or not being available, resulting in
 segmentation faults and dumping the core, to being able to mine with the main GPU, but the system getting
@@ -72,7 +76,7 @@ Use the new drivers, those drivers don't work. :/
 
 The furthest I got with 18.04 was mining with one card.
 
-![mining-with-one](IMG_3202.jpg)
+![mining-with-one](_IMG_3202.jpg)
 
 I eventually went back to Ubuntu 16.04.
 
@@ -89,9 +93,9 @@ Update the system.
 
 Download the AMDGPU-PRO drivers.
 
-16.04 driver [instructions](https://www.amd.com/en/support/kb/faq/gpu-635):
+16.04 driver <a href="https://www.amd.com/en/support/kb/faq/gpu-635" target="new">instructions</a>:
 
-[AMDGPU-PRO Driver Version 17.40 for Ubuntu 16.04.3](https://www2.ati.com/drivers/linux/ubuntu/amdgpu-pro-17.40-492261.tar.xz)
+<a href="https://www2.ati.com/drivers/linux/ubuntu/amdgpu-pro-17.40-492261.tar.xz" target="new">AMDGPU-PRO Driver Version 17.40 for Ubuntu 16.04.3</a>
 
 Where ever that is downloaded (for me in ~/Downloads)
 
@@ -161,9 +165,9 @@ If it boots, check if OpenCL registers the cards:
 
 Hopefully all the cards are displayed...*hopefully*
 
-Download [ubqminer](https://github.com/ubiq/ubqminer/releases):
+Download <a href="https://github.com/ubiq/ubqminer/releases" target="new">ubqminer</a>:
 
-[ubqminer-0.17.0-alpha.1.ubqhash-cuda10.0-linux-x86_64.tar.gz](https://github.com/ubiq/ubqminer/releases/download/v0.17.0-alpha.1.ubqhash/ubqminer-0.17.0-alpha.1.ubqhash-cuda10.0-linux-x86_64.tar.gz)
+<a href="https://github.com/ubiq/ubqminer/releases/download/v0.17.0-alpha.1.ubqhash/ubqminer-0.17.0-alpha.1.ubqhash-cuda10.0-linux-x86_64.tar.gz" target="new">ubqminer-0.17.0-alpha.1.ubqhash-cuda10.0-linux-x86_64.tar.gz</a>
 
 Unzip that file. It contains the executable which can be run from within the folder
 with the appropriate pool flags.
@@ -175,14 +179,15 @@ configuration for me was the grub config, and Ubuntu 16.04 with the ROCm drivers
 
 Success!
 
-![success](success.jpg)
+![success](_success.jpg)
 
 The purpose of the above is to speed up the process for someone else who wants to
 tinker. But miner beware: this isn't profitable, nor worth the time, other than
 to tinker. I have three GPUs running for a total hash rate of 65Mh/s. The current
-top miner on [Ubiqpool.io](https://ubiqpool.io/#/miners) has 4.52Gh/s and the last
-miners on the short list top out around 120Mh/s. At 21Mh/s per 4GB GPU, these miners
-have about 6 cards per rig. Getting to a Gigahash is going to involve a small warehouse.
+top miner on 
+<a href="https://ubiqpool.io/#/miners" target="new">Ubiqpool.io</a> 
+has 4.52Gh/s and the last miners on the short list top out around 120Mh/s. 
+At 21Mh/s per 4GB GPU, these miners have about 6 cards per rig. Getting to a Gigahash is going to involve a small warehouse.
 
 I ran the rig for a few hours (maybe around four) and registered less than 1 UBQ in
 rewards in that time. The fans on the cards are loud-ish and makes my room hot.
@@ -195,6 +200,6 @@ outright purchase than by way of mining.
 
 Enjoy your lambo!
 
-![lambo](chelsea-fern-797090-unsplash.jpg)    
+![lambo](_chelsea-fern-797090-unsplash.jpg)    
 
 *disclaimer: these musings are offered, at best, as educational, and at worst for entertainment purposes. Do not take action on the descriptions above, as they contain risks, and are not intended as financial advice. Do not do anything above.*    

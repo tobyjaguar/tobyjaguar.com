@@ -1,16 +1,17 @@
----
-title: "A Serendipitous Update to Passive Income"
-date: "03-15-2019"
----
+Title: A Serendipitous Update to Passive Income
+Date: 03/15/2019
+
 
 ## An update to the previous post on Passive Income in Crypto.
-![city](saketh-garuda.jpg)
+![city](_saketh-garuda.jpg)
 `(Photo by Saketh Garuda on Unsplash)`
 
-In a previous post on [Passive Income in Crypto](/Passive-Income/), [Celsius](https://celsius.network/)
+In a previous post on [Passive Income in Crypto](/Passive-Income/), 
+<a href="https://celsius.network/" target="new">Celsius<a/>
 was used as an example for making a yield on crypto deposited on their platform.
-[Celsius](https://celsius.network/) is a crypto lending company that allows users to take out
-loans against their crypto, or allows users to lend their crypto out for a percentage return
+<a href="https://celsius.network/" target="new">Celsius</a> 
+is a crypto lending company that allows users to take out loans against their crypto, 
+or allows users to lend their crypto out for a percentage return
 in the underlying asset. [Celsius](https://celsius.network/) had a [town hall](https://www.eventbrite.com/e/celsius-network-town-hall-event-token-utility-tickets-58595847758#)
 meeting in New York last week, in which I attended. One reason I was interested in
 attending is because I use the platform, and I wanted to look into the eyes of the

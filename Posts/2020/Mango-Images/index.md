@@ -3,7 +3,7 @@ Date: 08/15/2020
 
 ## I say Mango you say Mongo (for images)
 ![Mangos](./_avinash-kumar-TIGDsyy0TK4-unsplash.jpg)
-*Photo by Avinash Kumar on Unsplash*
+`Photo by Avinash Kumar on Unsplash`
 
 I recently looked into how MongoDB can facilitate storing and
 retrieving images, and had some difficulty implementing the

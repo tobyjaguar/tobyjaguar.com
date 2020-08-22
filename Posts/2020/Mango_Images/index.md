@@ -2,7 +2,7 @@ Title: Mongo Image Database
 Date: 08/15/2020
 
 ## I say Mango you say Mongo (for images)
-![Mangos](./avinash-kumar-TIGDsyy0TK4-unsplash.jpg)
+![Mangos](./_avinash-kumar-TIGDsyy0TK4-unsplash.jpg)
 *Photo by Avinash Kumar on Unsplash*
 
 I recently looked into how MongoDB can facilitate storing and
@@ -19,10 +19,10 @@ larger files. This is more of a bucket to dump large files, which is
 split between two collections, one which stores the file's metadata,
 while the other, the binary data source.
 
-It took a bit of poking around but I was able to get an image database 
-working with MongoDB using GridFS. Because the setup was a bit confusing, 
+It took a bit of poking around but I was able to get an image database
+working with MongoDB using GridFS. Because the setup was a bit confusing,
 and I was unable to find a working example with the latest version of Mongo,
-I am going to detail the solution I used, in an effort to help someone else, 
+I am going to detail the solution I used, in an effort to help someone else,
 but primarily as a historical document that I can refer back to if I ever
 need to do it again!
 
@@ -38,8 +38,8 @@ To begin, a new database needs to be created with user permissions for that Grid
 and retrieved from *bucket*.
 
 On the server side files can be stored into *bucket* with a command line
-interface called *mongofiles*. The downside of using *mongofiles* is that 
-the password seems to be passed in the clear on the command line. 
+interface called *mongofiles*. The downside of using *mongofiles* is that
+the password seems to be passed in the clear on the command line.
 Authenticating writes to this bucket db may be better suited for MongoDB Compass, or your own build admin panel, else be sure to clear the bash
 history from the terminal before logging out of an ssh session.
 
@@ -49,7 +49,7 @@ Next I added a couple test images to the bucket with the following command:
 
 `mongofiles -u bucketUser -p 123456 --db bucket put image.jpg`
 
-Using the command `put` will save the file *image.jpg* to the *bucket* 
+Using the command `put` will save the file *image.jpg* to the *bucket*
 database.
 
 Once the bucket is set up, and there are a few files to test in it, we
@@ -92,7 +92,7 @@ let db;
 Then, within the route declaration we will use *MongoClient* to connect
 to the database:
 
-![code example](./code-example.jpg)
+![code example](./_code-example.jpg)
 
 Note that online examples declare the variable bucket as follows:
 
@@ -104,7 +104,7 @@ Note that online examples declare the variable bucket as follows:
 
 This did not work for me. The above code example, however, does work.
 
-Most of the download stream references are boilerplate which comes from 
+Most of the download stream references are boilerplate which comes from
 other examples, and the driver <a href="http://mongodb.github.io/node-mongodb-native/3.6/api/" target="new">documentation</a>.
 
 This is the declaration for an express *get* route for retrieval. There are
@@ -160,7 +160,7 @@ router.get('/name/:filename', async (req, res) => {
 }));
 
 module.exports = router;
-``` 
+```
 
 And that is it. A bit tricky to get the db instantiated, but once that
 is solved, the rest works as the api documentation states.

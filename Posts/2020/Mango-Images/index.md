@@ -66,21 +66,21 @@ Install the <a href="https://www.npmjs.com/package/mongodb" target="new">mongodb
 
 Then we will need to construct a *MongoClient* with:
 
-```
+```js
 const mongodb = require('mongodb');
 const MongoClient = require('mongodb').MongoClient;
 ```
 
 we also want to declare our database information:
 
-```
+```js
 const imageDB = config.get('imageDB');
 const imageBucket = config.get('imageBucket');
 ```
 
 as well as some options for the db connection:
 
-```
+```js
 const options = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -96,7 +96,7 @@ to the database:
 
 Note that online examples declare the variable bucket as follows:
 
-```
+```js
   let bucket = new mongodb.GridFSBucket(db, {
     bucketName: 'photos'
   });
@@ -113,7 +113,7 @@ get route, so this example demonstrates only that.
 
 The full code example is as follows:
 
-```
+```js
 const mongodb = require('mongodb');
 const MongoClient = require('mongodb').MongoClient;
 const config = require('config');

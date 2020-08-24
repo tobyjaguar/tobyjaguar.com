@@ -117,7 +117,7 @@ Install drivers:
 
 ```bash
 ./amdgpu-pro-install –y
-`
+```
 
 Reboot the system:
 

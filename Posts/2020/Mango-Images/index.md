@@ -47,7 +47,9 @@ Next I added a couple test images to the bucket with the following command:
 
 *assuming user is bucketUser and the db is bucket*
 
-`mongofiles -u bucketUser -p 123456 --db bucket put image.jpg`
+```js
+mongofiles -u bucketUser -p 123456 --db bucket put image.jpg
+```
 
 Using the command `put` will save the file *image.jpg* to the *bucket*
 database.
@@ -66,7 +68,7 @@ Install the <a href="https://www.npmjs.com/package/mongodb" target="new">mongodb
 
 Then we will need to construct a *MongoClient* with:
 
-```js
+```
 const mongodb = require('mongodb');
 const MongoClient = require('mongodb').MongoClient;
 ```

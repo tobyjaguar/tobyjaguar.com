@@ -17,8 +17,8 @@ The purpose of this post is a bit of a reminder on how I set up HAProxy on
 a Ubuntu 16.04 server, because it was a bit confusing, and hopefully it helps
 someone else doing the same thing, or at the very least my future self.
 
-We are running a demo for the 
-<a href="https://www.smartpiggies.com/" target="new">SmartPiggies</a> 
+We are running a demo for the
+<a href="https://www.smartpiggies.com/" target="new">SmartPiggies</a>
 DApp and continue to make it more stable. Last week someone on twitter asked to see
 the DApp so I checked the link before sending it along. It was a good thing I
 checked the link, because the server was not resolving the DApp! I thought someone
@@ -39,7 +39,7 @@ a redundant server to function as a backup in case one server went down. We now
 had two such redundant servers, the original one that went down and the new one
 I just spun up. I just needed to put a load balancer in front of those servers.
 
-One of the best load balancers out there is 
+One of the best load balancers out there is
 <a href="http://www.haproxy.org/" target="new">HAProxy</a>
 and I spent my Sunday evening waiting for the first episode of GOT to start
 researching how to put up HAProxy on Ubuntu 16.04 to function as a failover if
@@ -59,11 +59,11 @@ HAProxy will be a load balancer switching between both servers in a round robin
 scheme to distribute calls to either server. If one server is unresponsive, all
 requests go to the server still running.
 
-I used the directions specified in this 
+I used the directions specified in this
 <a href="https://tecadmin.net/how-to-setup-haproxy-load-balancing-on-ubuntu-linuxmint/" target="new">tecadmin</a>
 article to setup HAProxy.
 
-```
+```bash
 sudo add-apt-repository ppa:vbernat/haproxy-1.8
 sudo apt-get update
 sudo apt-get install haproxy
@@ -73,9 +73,9 @@ Another article suggested coordinating server names.
 This meant editing the /etc/hosts file on the HAProxy server with the names of the DApp
 server IPs and names:
 
-`192.168.0.101 demo1.server.com demo1`
+*192.168.0.101 demo1.server.com demo1*
 
-`192.168.0.102 demo2.server.com demo2`
+*192.168.0.102 demo2.server.com demo2*
 
 and also editing the /etc/hosts file on the respective DApp servers:
 
@@ -86,7 +86,9 @@ for demo1 -
 Once the server names were coordinated, the configuration file for HAProxy needs
 to be setup for the server declarations
 
-`sudo vim /etc/haproxy/haproxy.cfg`
+```bash
+sudo vim /etc/haproxy/haproxy.cfg
+```
 
 I left the default global settings in tact and added the definitions for the
 frontend and backend:
@@ -99,7 +101,7 @@ frontend Local_Server
 
 backend:
 
-```
+```nginx
 backend Web_Servers
   mode http
   balance roundrobin
@@ -113,15 +115,23 @@ backend Web_Servers
 
 then checking the config for errors with:
 
-`haproxy -c -f /etc/haproxy/haproxy.cfg`
+```bash
+haproxy -c -f /etc/haproxy/haproxy.cfg
+```
 
 is it returns valid, then we are good to go.
 
 I used systemd to manage the process with:
 
-`sudo systemctl restart haproxy`
+```bash
+sudo systemctl restart haproxy
+```
 
-rather than the `service` command detailed in the article.
+rather than the
+```bash
+service
+```
+command detailed in the article.
 
 That wasn't so bad right? Switch the DNS record to the IP of the HAProxy server
 and each DApp server gets used, rotating round robin for each request. If one
@@ -134,7 +144,7 @@ So, ssl for this setup. How does one do that? Should be easy. Well, almost.
 
 ## Setting up certbot with HAProxy
 
-<a href="https://certbot.eff.org/" target="new">Certbot</a> 
+<a href="https://certbot.eff.org/" target="new">Certbot</a>
 is great and pretty easy to setup on http
 servers like Apache and Nginx, so it should be easy with HAProxy.
 
@@ -144,7 +154,7 @@ or Nginx module.
 This was the annoying part and the primary reason for the post.
 
 The foundational directions for the implementation I went with comes from a
-<a href="https://serversforhackers.com/c/letsencrypt-with-haproxy" target="new">serversforhackers</a> 
+<a href="https://serversforhackers.com/c/letsencrypt-with-haproxy" target="new">serversforhackers</a>
 article describing the setup.
 
 For this setup the cert goes on the HAProxy server not the DApp servers, as the
@@ -152,7 +162,7 @@ encrypted connection is made with the HAProxy server.
 
 Installing certbot on the HAProxy server:
 
-```
+```bash
 sudo add-apt-repository -y ppa:certbot/certbot
 sudo apt-get update
 sudo apt-get install -y certbot
@@ -173,7 +183,7 @@ Here a second internal backend server is defined that will listen to port 8888
 when it receives letsencrypt requests. This would be defined just under the
 frontend "Local_Server" section to look like:
 
-```
+```nginx
 frontend Local_Server
   bind *:80
   default_backend Web_Servers
@@ -194,7 +204,8 @@ backend Web_Servers
 ```
 
 Then make a new certificate:
-```
+
+```bash
 sudo certbot certonly --standalone -d demo.scalinglaravel.com \
     --non-interactive --agree-tos --email admin@example.com \
     --http-01-port=8888
@@ -202,7 +213,7 @@ sudo certbot certonly --standalone -d demo.scalinglaravel.com \
 
 alternative flags include:
 
-```
+```bash
 certbot certonly --standalone --agree-tos --non-interactive \
 -m yourmail@host.org -d domain --preferred-challenges http \
 --http-01-port=8888 --renew-with-new-domains \
@@ -212,23 +223,31 @@ certbot certonly --standalone --agree-tos --non-interactive \
 Next the HAProxy config file needs to be updated with the frontend designation
 for requests on the ssl default port 443:
 
-`bind *:443 ssl crt /etc/ssl/demo.scalinglaravel.com/demo.scalinglaravel.com.pem`
+```
+bind *:443 ssl crt /etc/ssl/demo.scalinglaravel.com/demo.scalinglaravel.com.pem
+```
 
-where `/etc/ssl/demo.scalinglaravel.com/demo.scalinglaravel.com.pem`
+where
+```
+/etc/ssl/demo.scalinglaravel.com/demo.scalinglaravel.com.pem
+```
 
 will be made next with the combined certs that certbot previously made with the
 command:
 
-```
+```bash
 sudo certbot certonly --standalone -d demo.scalinglaravel.com \
     --non-interactive --agree-tos --email admin@example.com \
     --http-01-port=8888
 ```
 
-demo.scalinglaravel.com is the server name from the article and
-demo.scalinglaravel.com.pem is the combined cert that will be made next.
+*demo.scalinglaravel.com* is the server name from the article and
+*demo.scalinglaravel.com.pem* is the combined cert that will be made next.
 
-Two additional lines need to be included under `bind *:443`
+Two additional lines need to be included under
+```
+bind *:443
+```
 
 ```    
   acl letsencrypt-acl path_beg /.well-known/acme-challenge/
@@ -239,7 +258,9 @@ these have to do with checking to see if the URI is requesting letsencrypt.
 
 Next, generate a new certificate:
 
- `sudo certbot renew --tls-sni-01-port=8888`
+ ```bash
+ sudo certbot renew --tls-sni-01-port=8888
+ ```
 
  this is the same port listed in all the directions above. The port number
  doesn't necessarily matter, but the same port should be designated in all
@@ -248,24 +269,28 @@ Next, generate a new certificate:
  Then the directory listed in the HAProxy config for the ssl certificate needs to
  be made:
 
- `sudo mkdir -p /etc/ssl/demo.scalinglaravel.com`
+ ```bash
+ sudo mkdir -p /etc/ssl/demo.scalinglaravel.com
+ ```
 
 Then combine the certificates that certbot made:
 
-```
+```bash
 sudo cat /etc/letsencrypt/live/demo.scalinglaravel.com/fullchain.pem \
     /etc/letsencrypt/live/demo.scalinglaravel.com/privkey.pem \
     | sudo tee /etc/ssl/demo.scalinglaravel.com/demo.scalinglaravel.com.pem
 ```
 
-This command failed to write the `privkey` file into the combined file, and the
+This command failed to write the *privkey* file into the combined file, and the
 command to check the config failed for me:
 
-`haproxy -c -f /etc/haproxy/haproxy.cfg`
+```bash
+haproxy -c -f /etc/haproxy/haproxy.cfg
+```
 
 I finally had to run the above command and then run:
 
-```
+```bash
 sudo cat /etc/letsencrypt/live/demo.scalinglaravel.com/privkey.pem >> sudo
 /etc/ssl/demo.scalinglaravel.com/demo.scalinglaravel.com.pem
 ```
@@ -273,17 +298,19 @@ sudo cat /etc/letsencrypt/live/demo.scalinglaravel.com/privkey.pem >> sudo
 
 This put all the certs into the one file.
 
-Note that `demo.scalinglaravel.com` is the name used in the article, for this post
-it could be `demo.dappURL.com` or what ever DNS record the ssl certificate was
+Note that *demo.scalinglaravel.com* is the name used in the article, for this post
+it could be *demo.dappURL.com* or what ever DNS record the ssl certificate was
 made for.
 
-To be explicitly clear if the site for the DApp was `demo.DAppName.com`, the
-cert would be made for `demo.DAppName.com` and the directory defined in the
+To be explicitly clear if the site for the DApp was *demo.DAppName.com*, the
+cert would be made for *demo.DAppName.com* and the directory defined in the
 haproxy.cfg configuration file would be listed as:
 
-`bind *:443 ssl crt /etc/ssl/demo.DAppName.com/demo.DAppName.com.pem`
+```
+bind *:443 ssl crt /etc/ssl/demo.DAppName.com/demo.DAppName.com.pem
+```
 
-The HAProxy configuration file at `/etc/haproxy/haproxy.cfg` would then look similar
+The HAProxy configuration file at ```/etc/haproxy/haproxy.cfg``` would then look similar
 to:
 
 ```
@@ -311,7 +338,9 @@ backend be-scalinglaravel
 
 I received an error once the cert was loaded by HAProxy which stated:
 
-`Setting tune.ssl.default-dh-param to 1024 by default, if your workload permits it you should set it to at least 2048`
+```
+Setting tune.ssl.default-dh-param to 1024 by default, if your workload permits it you should set it to at least 2048
+```
 
 I ended up adding the following to the HAProxy configuration file:
 
@@ -364,9 +393,9 @@ script by adding:
 ENABLED=1
 ```
 
-to the `/etc/default/haproxy` file or by enabling the service with:
+to the ```/etc/default/haproxy``` file or by enabling the service with:
 
-```
+```bash
 sudo systemctl enable haproxy
 ```
 

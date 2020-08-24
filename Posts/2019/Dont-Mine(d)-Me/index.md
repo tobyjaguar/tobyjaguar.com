@@ -18,17 +18,17 @@ make very much in mining rewards.
 
 *Note: mining rewards are taxable as income to US citizens*
 
-<a href="https://ubiqsmart.com/" target="new">UBIQ</a> 
+<a href="https://ubiqsmart.com/" target="new">UBIQ</a>
 went through a hard fork in late 2018 to change their hashing algorithm to
-<a href="https://blog.ubiqsmart.com/ubiq-quarterly-report-august-2018-f7451c2149c2" target="new">Ubqhash</a>. 
+<a href="https://blog.ubiqsmart.com/ubiq-quarterly-report-august-2018-f7451c2149c2" target="new">Ubqhash</a>.
 This meant that the current mining software used to mine the rewards for that chain would need to be updated. I can't remember what the issues were, but the platforms that were currently mining <a href="https://ubiqsmart.com/" target="new">UBIQ</a>
-were no longer going to work. So I shut the rig down and it sat for a couple months. 
+were no longer going to work. So I shut the rig down and it sat for a couple months.
 When I was asked to pick up all the gear, I thought it would be fun to setup the rig at my apartment and work through a proof-of-concept to get a new system up and running. Well, that turned out to be quite the adventure.
 
 ![rig](_IMG_3196.jpg)
 
-The goal was to get the 
-<a href="https://github.com/ubiq/ubqminer" target="new">ubqminer</a> 
+The goal was to get the
+<a href="https://github.com/ubiq/ubqminer" target="new">ubqminer</a>
 working on a Ubuntu installation. The incentive was fun, what was delivered was pain.
 
 Skip down to *Here is what worked* to avoid all the complaining to follow.
@@ -46,7 +46,7 @@ I have three AMD RX570 GPU cards that I was planning to mine with. I began with 
 build and downloaded the
 <a href="https://www.amd.com/en/support/graphics/radeon-500-series/radeon-rx-500-series/radeon-rx-570" target="new">AMDGPU</a>
 the RX570 drivers, which is a zipped file.
-There are 
+There are
 <a href="https://amdgpu-install.readthedocs.io/en/latest/" target="new">instructions</a> which list the process for
 unzipping and installation. Of course there is an immediate issue, as there are variants that can, and
 need to be, installed. The critical information is that this rig will use multiple cards and two of
@@ -54,12 +54,12 @@ the GPUs will run headless. Long story short, after hours, and days, of installi
 blowing up the system, looking at every AMDGPU issue online, adjusting the grub file, corrupting the
 hard drive (many times), reinstalling Ubuntu, and repeating the process, I could never get Ubuntu 18.04
 to run three AMD GPUs with
-<a href="https://github.com/ubiq/ubqminer" target="new">ubqminer</a>. 
+<a href="https://github.com/ubiq/ubqminer" target="new">ubqminer</a>.
 I asked for help in the
-<a href="https://ubiqsmart.com/" target="new">UBIQ</a> 
+<a href="https://ubiqsmart.com/" target="new">UBIQ</a>
 Discord mining channel, which resulted in the advice of using a different
-miner. I tried that, I built 
-<a href="https://github.com/ubiq/ubqminer" target="new">ubqminer</a> 
+miner. I tried that, I built
+<a href="https://github.com/ubiq/ubqminer" target="new">ubqminer</a>
 from the source code, I tried more combinations than I can recall, and nothing worked. Very frustrating.
 
 The main issues were with OpenCL not being installed, or not being available, resulting in
@@ -89,7 +89,9 @@ Install Ubuntu 16.04
 
 Update the system.
 
-`sudo apt udpate && sudo apt -y upgrade`
+```bash
+sudo apt udpate && sudo apt -y upgrade
+```
 
 Download the AMDGPU-PRO drivers.
 
@@ -99,61 +101,81 @@ Download the AMDGPU-PRO drivers.
 
 Where ever that is downloaded (for me in ~/Downloads)
 
-`tar -Jxvf amdgpu-pro-17.30-NNNNNN.tar.xz`
+```bash
+tar -Jxvf amdgpu-pro-17.30-NNNNNN.tar.xz
+```
 
 *(note the capital "J" in there)*
 
 Change into that unzipped directory:
 
-`cd amdgpu-pro-17.30-NNNNNN`
+```bash
+cd amdgpu-pro-17.30-NNNNNN
+```
 
 Install drivers:
 
-`./amdgpu-pro-install –y`
+```bash
+./amdgpu-pro-install –y
+`
 
 Reboot the system:
 
-`sudo reboot`
+```bash
+sudo reboot
+```
 
 Not necessary but I did it:
 
-`sudo usermod -a -G video $LOGNAME`
+```bash
+sudo usermod -a -G video $LOGNAME
+```
 
 Install OpenCL:
 
-`sudo apt install -y rocm-amdgpu-pro`
+```bash
+sudo apt install -y rocm-amdgpu-pro
+```
 
 Set permanent link to clinfo:
 
-`echo 'export LLVM_BIN=/opt/amdgpu-pro/bin' | sudo tee /etc/profile.d/amdgpu-pro.sh`
+```bash
+echo 'export LLVM_BIN=/opt/amdgpu-pro/bin' | sudo tee /etc/profile.d/amdgpu-pro.sh
+```
 
 This doesn't work, but you can use the clinfo package:
 
-`sudo apt install -y clinfo`
+```bash
+sudo apt install -y clinfo
+```
 
 Set up Grub boot configuration so the system will boot when multiple cards are plugged in.
 
-`sudo vim /etc/default/grub`
+```bash
+sudo vim /etc/default/grub
+```
 
 *(I use vim, nano would also work)*
 
 Change the following lines:
 
-`GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"`
+```GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"```
 
-`GRUB_CMDLINE_LINUX=""`
+```GRUB_CMDLINE_LINUX=""```
 
 to ->
 
-`GRUB_CMDLINE_LINUX_DEFAULT="quiet splash amdgpu.vm_fragment_size=9"`
+```GRUB_CMDLINE_LINUX_DEFAULT="quiet splash amdgpu.vm_fragment_size=9"```
 
-`GRUB_CMDLINE_LINUX="amd_iommu=on iommu=pt"`
+```GRUB_CMDLINE_LINUX="amd_iommu=on iommu=pt"```
 
 Save that and exit the configuration file.
 
 Make sure grub is updated for the reboot:
 
-`sudo update-grub`
+```bash
+sudo update-grub
+```
 
 Shutdown the system and plug in the other cards.
 
@@ -161,7 +183,9 @@ Turn it back on and...
 
 If it boots, check if OpenCL registers the cards:
 
-`clinfo`
+```bash
+clinfo
+```
 
 Hopefully all the cards are displayed...*hopefully*
 
@@ -172,7 +196,9 @@ Download <a href="https://github.com/ubiq/ubqminer/releases" target="new">ubqmin
 Unzip that file. It contains the executable which can be run from within the folder
 with the appropriate pool flags.
 
-`./ubqminer --farm-recheck 200 -G stratum2+tcp://someUbiqAddress.rigName@us.ubiqpool.io:8008`
+```bash
+./ubqminer --farm-recheck 200 -G stratum2+tcp://someUbiqAddress.rigName@us.ubiqpool.io:8008
+```
 
 The above is a mish mash of a walk thru. For those who are familiar, the relevant
 configuration for me was the grub config, and Ubuntu 16.04 with the ROCm drivers.
@@ -184,9 +210,9 @@ Success!
 The purpose of the above is to speed up the process for someone else who wants to
 tinker. But miner beware: this isn't profitable, nor worth the time, other than
 to tinker. I have three GPUs running for a total hash rate of 65Mh/s. The current
-top miner on 
-<a href="https://ubiqpool.io/#/miners" target="new">Ubiqpool.io</a> 
-has 4.52Gh/s and the last miners on the short list top out around 120Mh/s. 
+top miner on
+<a href="https://ubiqpool.io/#/miners" target="new">Ubiqpool.io</a>
+has 4.52Gh/s and the last miners on the short list top out around 120Mh/s.
 At 21Mh/s per 4GB GPU, these miners have about 6 cards per rig. Getting to a Gigahash is going to involve a small warehouse.
 
 I ran the rig for a few hours (maybe around four) and registered less than 1 UBQ in

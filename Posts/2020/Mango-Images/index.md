@@ -62,13 +62,15 @@ that I hope to avoid in the future. The first trick is that the express
 mongoose driver doesn't support GridFS, (*or at least it doesn't appear
 to, but if so use that because that would be easier*).
 
-To access the GridFS database from an express application the official *mongodb* driver for Node.js is needed.
+To access the GridFS database from an express application the official
+<a href="https://www.npmjs.com/package/mongodb" target="new">mongodb</a>
+ driver for Node.js is needed.
 
-Install the <a href="https://www.npmjs.com/package/mongodb" target="new">mongodb</a> driver for the Node application.
+Install the *mongodb* driver for the Node application.
 
 Then we will need to construct a *MongoClient* with:
 
-```
+```js
 const mongodb = require('mongodb');
 const MongoClient = require('mongodb').MongoClient;
 ```

@@ -140,7 +140,7 @@ is yet another trick here. In the Nginx server settings for the app, say at
 `/etc/nginx/sites-available/examplesite.com` you need to add the header
 forwarding command block as follows:
 
-```
+```nginx
 proxy_set_header X-Forwarded-Proto $scheme;
   if ( $http_x_forwarded_proto != 'https' ) {
     return 301 https://$host$request_uri;

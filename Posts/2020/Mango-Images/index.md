@@ -42,7 +42,7 @@ interface called *mongofiles*. The downside of using *mongofiles* is that
 the password seems to be passed in the clear on the command line.
 
 Authenticating writes to this bucket db may be better suited for MongoDB Compass,
-or your own build admin panel, else be sure to clear the bash
+or your own custom admin panel, else be sure to clear the bash
 history from the terminal before logging out of an ssh session.
 
 ```bash

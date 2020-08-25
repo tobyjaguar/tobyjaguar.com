@@ -40,8 +40,17 @@ and retrieved from *bucket*.
 On the server side files can be stored into *bucket* with a command line
 interface called *mongofiles*. The downside of using *mongofiles* is that
 the password seems to be passed in the clear on the command line.
-Authenticating writes to this bucket db may be better suited for MongoDB Compass, or your own build admin panel, else be sure to clear the bash
+
+Authenticating writes to this bucket db may be better suited for MongoDB Compass,
+or your own build admin panel, else be sure to clear the bash
 history from the terminal before logging out of an ssh session.
+
+```bash
+cat /dev/null > ~/.bash_history
+```
+*from
+ <a href="https://askubuntu.com/questions/191999/how-to-clear-bash-history-completely#192001" target="new">
+askubuntu</a>*
 
 Next I added a couple test images to the bucket with the following command:
 

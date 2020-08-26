@@ -18,11 +18,15 @@ at
 
 <a href="https://handshake.org/" target="new">Handshake</a>
 is a promising young project, which is now live, that aims to offer an alternative to the  current Domain Name System (<a href="https://en.wikipedia.org/wiki/Domain_Name_System" target="new">DNS</a>). I have been following the project and was interested in its progress. The hackathon presented an opportunity to learn more about the tech stack of the project, and get my hands dirty in trying to make an application that integrated with
-the Handshake network.
+the 
+<a href="https://handshake.org/" target="new">Handshake</a>
+network.
 
 <a href="https://www.namebase.io/" target="new">Namebase</a>, one of the sponsors, offers a platform to manage domains that are registered on the network, and to buy and sell
 <a href="https://coinmarketcap.com/currencies/handshake/" target="new">$HNS</a>
-(the native token for the Handshake network). In thinking of a compelling application to make for the hackathon, I narrowed focus on the public API
+(the native token for the 
+<a href="https://handshake.org/" target="new">Handshake</a>
+ network). In thinking of a compelling application to make for the hackathon, I narrowed focus on the public API
 <a href="https://www.namebase.io/" target="new">Namebase</a> has for domain resource information: `/api/v0/dns/domains/:domain`
 
 In having some familiarity with calling APIs, I was hoping that the domain
@@ -74,16 +78,16 @@ wasn't going to provide the information needed for the bot.
 I still thought it would be fun to make a bot to look up information on the <a href="https://handshake.org/" target="new">Handshake</a> network, but it was looking like I would have to make a bridge.
 
 After some research into the API documentaion for
-<a href="https://github.com/handshake-org/hnsd" target="new">hnsd</a>
-an SPV resolver daemon for the
+<a href="https://github.com/handshake-org/hsd" target="new">hsd</a>
+the reference implementation of the 
 <a href="https://handshake.org/" target="new">Handshake</a> network, it
 looked as though I would need to run a node in conjunction with the bot
 service to access network information like DNS records.
 
 A helpful hacker in the
 <a href="https://discord.com/invite/V3aTrkp" target="new">Discord</a>
-pointed me to an API on the `hnsd` node that would be helpful for the
-DNS resource, and I had already found the `getnameinfo` API which would provide information for queried names on the network. If this solution were to work, the next phase would be to build the bot, and run it against a local build of the `hnsd` daemon.
+pointed me to an API on the `hsd` node that would be helpful for the
+DNS resource, and I had already found the `getnameinfo` API which would provide information for queried names on the network. If this solution were to work, the next phase would be to build the bot, and run it against a local build of the `hsd` daemon.
 
 <a href="https://telegram.org/" target="new">Telegram</a>
 bots are very approachable to create, and the available packages
@@ -91,7 +95,7 @@ take a lot of headache out of the integration. It is a great platform choice
 for bots, as there are many helpful examples and telegram is a widely available app. The
 <a href="https://telegram.me/HandyDNS_Bot" target="new">HandyDNS_Bot</a>
 was designed to search for names queried by the user, and return the
-information from the `hnsd` node.
+information from the `hsd` node.
 
 The bot implementation for NodeJS is done by instantiating the `node-telegram-bot-api` package:
 
@@ -117,8 +121,8 @@ bot.on('message', async (msg) => {
 ```
 
 The rest of the bot implementation is filtering user commands, and
-returning queries from the `hnsd` node to the user. The bot
-is effectively an interface for the `hnsd` SPV node. The available
+returning queries from the `hsd` node to the user. The bot
+is effectively an interface for `hsd` RPC calls. The available
 commands on the bot are:
 
 - /help
@@ -154,33 +158,33 @@ type: NS
 ns: ns1.nb.
 ```
 
-which comes from the `hnsd` resolver daemon.
+which comes from the `hsd` daemon.
 
 Once all this was working, the last challenge was putting it in a production environment by running it on a cloud server, and making it a
 high-availability service.
 
 The bot is implemented with NodeJS and runs on an Ubuntu 18.04 server with
-PM2 managing the bot service and the hnsd daemon. Spinning up a server is
+PM2 managing the bot service and the `hsd` daemon. Spinning up a server is
 always a bit a time consuming task, unless there is a handy snapshot
 available. I did not have anything handy, but knew that a live app is far
 more compelling that a github repo, so I spun one up, and began the process
 of building a solution for the
 <a href="https://telegram.me/HandyDNS_Bot" target="new">HandyDNS_Bot</a>.
 
-I was dreading the task of getting the `hnsd` daemon running on an Ubuntu
+I was dreading the task of getting the `hsd` node running on an Ubuntu
 server. I have ran many node clients from other blockchain projects, and
 the build always presents a challenge. It rarely is easy, and never works on
-initial install. I was pleasantly surprised that `hsnd` was realtively easy
+initial install. I was pleasantly surprised that `hnd` was realtively easy
 to get up and running on an Ubuntu machine, as well as how painless it was
-to integrate the daemon with a NodeJS service. The bot and `hnsd` daemon
+to integrate the daemon with a NodeJS service. The bot and `hsd` daemon
 talked to eachother seemlessly. The only hiccup in building the
-`hnsd` daemon was that the new machine did not have the build-essential
+`hsd` node was that the new machine did not have the build-essential
 package, in which the build failed due to `make` being unavailable.
 Once the build was sorted, everything else was what one would expect
 from running NodeJS application services.
 
 The server was spun, iptables configured, updates updated, node installed,
-`hnsd` built, pm2 installed, code uploaded, and then the services started.
+`hsd` built, pm2 installed, code uploaded, and then the services started.
 All of that went well, and the bot is live!
 
 ![Success](./_guille-alvarez-IcI3FizU9Cw.jpg)

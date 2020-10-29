@@ -48,7 +48,9 @@ values, from cheeky users poking the bot. There is also an issue
 I came across, while researching garbage return values, where users
 making requests to the bot from countries that block telegram can result in error messages:
 
-`error: [polling_error] {"code":"EFATAL","message":"EFATAL: Error: getaddrinfo EAI_FAIL api.telegram.org api.telegram.org:443"}`
+```
+error: [polling_error] {"code":"EFATAL","message":"EFATAL: Error: getaddrinfo EAI_FAIL api.telegram.org api.telegram.org:443"}
+```
 
 This can happen if uses from, say, the Russian Federation make a request to the bot. This solution dicussed 
 <a href="https://github.com/yagop/node-telegram-bot-api/issues/696" target="new">here</a> 
@@ -65,7 +67,7 @@ node-telegram-bot-api</a> documentation as well.
 
 The polling errors can be handled with:
 
-```
+```js
 bot.on('polling_error', (error) => {
   console.log(error.code);  // => 'EFATAL'
 });
@@ -73,7 +75,7 @@ bot.on('polling_error', (error) => {
 
 and any webhook errors:
 
-```
+```js
 bot.on('webhook_error', (error) => {
   console.log(error.code);  // => 'EPARSE'
 });

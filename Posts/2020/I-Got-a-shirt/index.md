@@ -6,7 +6,7 @@ Date: 10/29/2020
 
 Following the Sia and Namebase hackathon via
 <a href="https://gitcoin.co/" target="new">gitcoin</a> 
-I recieved a runner up prize of 250 HSN and this pretty fun shirt, but
+I recieved a runner up prize of 250 HNS and this pretty fun shirt, but
 <a href="https://github.com/tobyjaguar/handybot" target="new">handybot</a> also got used in production for a bit in the 
 <a href="https://t.me/handshaketalk" target="new">HandshakeTalk</a> 
 telegram chat group, which was great to see.
@@ -23,8 +23,8 @@ opportunity because that was the exact venue handbybot was designed for.
 
 The bot failed amazingly! The first challenge was standing it up on 
 a server, which I had done for the hackathon, and also running it against a db to query the HSN price. I wanted the bot to also give
-the HSN/USD crossrate, but I didn't want to just forward api calls
-to the <a href="https://www.namebase.io/" target="new">namebase</a> api, as it would blow out the api call quota. So for some interval, handybot would write the HSN price to mongoDB and then any user
+the HNS/USD crossrate, but I didn't want to just forward api calls
+to the <a href="https://www.namebase.io/" target="new">namebase</a> api, as it would blow out the api call quota. So for some interval, handybot would write the HNS price to mongoDB and then any user
 requesting the price from the bot would result in a db call, rather than an api call.
 
 All of this was working fine, and handybot was added to the telegram 
@@ -97,3 +97,5 @@ The hackathon was a fun experience, and it was great to have the
 project used for its designed purpose, even if only for a brief, shining moment. We love you Handybot!
 
 ![handybot](./_handy.png)
+
+*disclaimer: these musings are offered, at best, as educational, and at worst for entertainment purposes. Do not take action on the descriptions above, as they contain risks, and are not intended as financial advice. Do not do anything above.*

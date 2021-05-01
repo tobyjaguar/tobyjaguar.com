@@ -2,7 +2,7 @@ Title: State of the Crypto Union
 Date: 05/01/2021
 
 ## The State of the Crypto Union
-![shirt](./IMG_4192.jpeg)
+![shirt](./_IMG_4192.jpeg)
 
 ### DeFi, NFTs, and Derivatives, oh my!
 
@@ -25,12 +25,12 @@ crypto bull run to rival 2017. It wasn't completely organic as
 there was help from the <a href="https://www.reddit.com/r/wallstreetbets/" target="new">WallStreetBets</a> crowd, Elon Musk,
 Mark Cuban, and apparently Guy Fieri.
 
-![fast money tweet](./fastmoney.png)
+![fast money tweet](./_fastmoney.png)
 
 But the tides changed with Michael Salor of MicroStrategy's purchase
 and continual proselytization of Bitcoin as an institutional asset.
 
-![Saylor article](./michaelsaylor.png)
+![Saylor article](./_michaelsaylor.png)
 
 <a href="https://www.cnbc.com/2021/02/23/microstrategy-ceo-michael-saylor-sees-bitcoin-100-trillion-market-value-one-day.html" target="new">Article</a>
 
@@ -51,7 +51,7 @@ Perhaps the biggest event from the NFT movement during 2021 was the $69 million 
 <a href="https://www.theverge.com/2021/3/11/22325054/beeple-christies-nft-sale-cost-everydays-69-million" target="new">Beeple's</a>
 "Everydays - The First 5000 Days" by Christie's pictured below.
 
-![Everydays](./everydays.jpeg)
+![Everydays](./_everydays.jpeg)
 
 Wait, how did you get it, you don't own that?! Don't ask, but someone does own it and that's the point. Perhaps another post will wrestle with ownship and digital art, which many have explored well before NFTs. You can't buy a 
 <a href="https://www.forbes.com/sites/tommybeer/2021/03/11/pipe-smoking-alien-cryptopunk-nft-sells-for-75-million/?sh=4247f8fb5c56" target="new">crypto punk</a>

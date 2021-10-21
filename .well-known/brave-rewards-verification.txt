@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: tobyjaguar.com
+Token: 089d0f4848b2c58713c6c75793bfefb4e196bfe0628555b9bc1c1eeb8eed13f6

@@ -3,7 +3,7 @@ Date: 05/12/2022
 
 ## Crypto Crashing...Again
 ![car-crash](./_car_crash.jpeg)
-| Photo by Conor Samuel on Unsplash |
+Photo by Conor Samuel on Unsplash
 
 Could be the name of a song, but alas it is just crypto being crypto. This time with moar flare than usual...or just the same ole same ole thang.
 

@@ -38,7 +38,7 @@ And a response from <a href="https://twitter.com/BuddieAli">@BuddieAli</a>:
 
 This "raised concerns over its decentralization" from <a href="https://www.investing.com/news/cryptocurrency-news/aws-outage-hits-dydx-raising-concerns-over-its-decentralization-2707987">investing.com</a>. But the sentimate was industry wide. 
 
-In addition to infrastructure criticism about DeFi, a concern over regulatory vulnerability was also raised when the SEC began sabre rattling and enforcement action during the summer of 2021. This began in earnest witht the appointment of the new SEC chairman Gary Gensler, as <a href="https://decrypt.co/76511/sec-chairman-gary-gensler-lawsuits-stock-tokens">decrypt.co</a> notes.
+In addition to infrastructure criticism about DeFi, a concern over regulatory vulnerability was also raised when the SEC began sabre rattling and enforcement action during the summer of 2021. This began in earnest with the appointment of the new SEC chairman Gary Gensler, as <a href="https://decrypt.co/76511/sec-chairman-gary-gensler-lawsuits-stock-tokens">decrypt.co</a> notes.
 
 This prompted, perhaps one of the other largest DEXes, Uniswap to self regulate. With the SEC targeting "stock tokens," Uniswap began to remove tokens from its trading platform. <a href="https://decrypt.co/76793/ethrereum-dex-uniswap-drops-tokenized-stocks-as-regulators-close-in">decrypt.co</a> 
 

@@ -227,5 +227,6 @@ outright purchase than by way of mining.
 Enjoy your lambo!
 
 ![lambo](_chelsea-fern-797090-unsplash.jpg)    
+Photo by <a href="https://unsplash.com/@chelseafern?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Chelsea fern</a> on <a href="https://unsplash.com/s/photos/lamborghini?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
 
 *disclaimer: these musings are offered, at best, as educational, and at worst for entertainment purposes. Do not take action on the descriptions above, as they contain risks, and are not intended as financial advice. Do not do anything above.*    

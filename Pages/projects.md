@@ -7,7 +7,7 @@ The following are some of the projects that I am working on, and actively mainta
 ### <a href="https://smartpiggies.com" target="new">SmartPiggies</a>
 
 <a href="https://smartpiggies.com" target="new">
-<img src="../assets/_piggieface_01.png" alt="smartpiggies logo" width="400">
+<img src="../assets/_Smart_Piggies_Gray.png" alt="smartpiggies logo" width="400">
 </a>
 
 SmartPiggies is an open source standard for a peer-to-peer derivatives market. It is intended for use on public blockchains. The project was conceptualized in the fall of 2018. A proof-of-concept of the design described in the pink paper was built for EthDenver in Feburary 2019. Development of a platform to facilitate a smartpiggies marketplace is in current development.

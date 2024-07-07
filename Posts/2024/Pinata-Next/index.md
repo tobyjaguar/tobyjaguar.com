@@ -242,7 +242,7 @@ form.parse(req, async (err: any, fields: any, files: any) => {
 ```
 Choose your own adventure here.
 
-The main sticking points have to do with the Pages Router working differently than the App Router APIs, specifically the lack of form data parsing. The next trick is *not* parsing the body data of the request, which is detailed in the config. Lastly the biggest trick,in my opinion, is getting the data back from the request. This is easily done in the documentation code by calling:
+The main sticking points have to do with the Pages Router working differently than the App Router APIs, specifically the lack of form data parsing. The next trick is *not* parsing the body data of the request, which is detailed in the config. Lastly the biggest trick, in my opinion, is getting the data back from the request. This is easily done in the documentation code by calling:
 
 ```javascript
 const data = await request.formData();
